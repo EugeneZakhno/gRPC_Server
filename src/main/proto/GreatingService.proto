@@ -1,0 +1,13 @@
+syntax = "proto3"; //версия
+package com.example.grpc; //пакет в который будет помещаться сгенерированный код
+
+message HelloRequest{//это сообщение, которое будет в запросе //типы данных, название запроса
+  string text = 1; //поля запроса с тегом 1 (это ключ целое число для сокращения места в пересылаемом сообщении)
+  repeated string hobbies = 2; //repeated - это список
+}
+message HelloResponse { //это сообщение, которое будет в ответе
+  string knockKnock = 1 ;
+}
+service GreetingService { //это RPC метод, который будет вызываться
+  rpc knockKnock(HelloRequest) returns (HelloResponse); //метод, который принимает запрос и возвращает ответ
+}
